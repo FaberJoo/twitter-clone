@@ -1,3 +1,9 @@
+// mac os
 .DS_Store
+
+// ide
 .idea
 .vscode
+
+// logs
+*/logs/*
