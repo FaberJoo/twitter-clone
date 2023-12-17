@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: twitter-clone
+  profiles:
+    active: metric, db, log
+  config:
+    import: 'aws-parameterstore:/config/twitter-local'
+  cloud:
+    aws:
+      parameterstore:
+        region: ${aws_region}
+      credentials:
+        access-key: ${aws_access_key}
+        secret-key: ${aws_secret_key}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+  datasource:
+    url: jdbc:postgresql://${.db.host}:${.db.port}/${.db.name}
+    username: ${.db.username}
+    password: ${.db.password}

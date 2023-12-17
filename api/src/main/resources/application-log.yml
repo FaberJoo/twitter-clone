@@ -1,0 +1,23 @@
+logging:
+  level:
+    root: INFO
+  file:
+    name: ./logs/twitter.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %magenta(${PID:- }) [%15.15t]  %cyan(%-40.40logger{39})  : %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %magenta(${PID:- }) [%15.15t]  %cyan(%-40.40logger{39}) : %msg%n"
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB   #default 10MB
+      max-history: 30       #default 7
+      file-name-pattern: ./logs/twitter.%d{yyyy-MM-dd}.%i.gz
+
+conversion-word:
+  clr: "org.springframework.boot.logging.logback.ColorConverter"
+  option:
+    STYLE: "BOLD"
+    trace: "WHITE"
+    debug: "BLUE"
+    info: "GREEN"
+    warn: "YELLOW"
+    error: "RED"
