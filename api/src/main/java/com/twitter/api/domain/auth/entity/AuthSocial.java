@@ -3,30 +3,28 @@ package com.twitter.api.domain.auth.entity;
 import com.twitter.api.domain.BaseTimeEntity;
 import com.twitter.api.domain.member.entity.Member;
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 
 @Entity
 @Getter
 public class AuthSocial{
-    @EmbeddedId
-    private AuthId id;
+    @Id
+    @GeneratedValue(generator = "uuid")
+    private String id;
 
-    @MapsId("memberId")
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @OneToOne
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, updatable = false)
     private Provider provider;
 
     @Column(nullable = false, length = 50, unique = true, updatable = false)

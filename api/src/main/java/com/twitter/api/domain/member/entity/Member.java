@@ -17,8 +17,10 @@ public class Member extends BaseTimeEntity {
     private String id;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, updatable = false)
     private LoginType loginType;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, updatable = false)
     private Role role;
 }
