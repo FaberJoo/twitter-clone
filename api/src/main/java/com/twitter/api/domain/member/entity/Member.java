@@ -16,8 +16,8 @@ public class Member extends BaseTimeEntity {
     @GeneratedValue(generator = "uuid")
     private String id;
 
-    @Column(length = 10, unique = true)
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private LoginType loginType;
 
     @Enumerated(EnumType.STRING)
     private Role role;
