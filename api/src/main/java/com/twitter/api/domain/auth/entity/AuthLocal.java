@@ -9,10 +9,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDateTime;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = lombok.AccessLevel.PROTECTED)
 public class AuthLocal{
     @Id
     @GeneratedValue(generator = "uuid")
