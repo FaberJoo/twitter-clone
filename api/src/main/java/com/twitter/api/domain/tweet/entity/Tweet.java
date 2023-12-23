@@ -10,7 +10,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Getter
@@ -24,18 +23,6 @@ public class Tweet extends BaseTimeEntity {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    @Column(nullable = false, length = 140)
+    @Column(nullable = false, length = 280)
     private String content;
-
-    @Column(nullable = false)
-    @ColumnDefault("0")
-    private long likeCount;
-
-    @Column(nullable = false)
-    @ColumnDefault("0")
-    private long replyCount;
-
-    @Column(nullable = false)
-    @ColumnDefault("0")
-    private long retweetCount;
 }
